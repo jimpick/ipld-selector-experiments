@@ -1,0 +1,7 @@
+ssb := builder.NewSelectorSpecBuilder(basicnode.Prototype.Any)
+
+	partialSelector := ssb.ExploreFields(func(specBuilder builder.ExploreFieldsSpecBuilder) {
+		specBuilder.Insert("Links", ssb.ExploreIndex(0, ssb.ExploreFields(func(specBuilder builder.ExploreFieldsSpecBuilder) {
+			specBuilder.Insert("Hash", ssb.Matcher())
+		})))
+	}).Node()
